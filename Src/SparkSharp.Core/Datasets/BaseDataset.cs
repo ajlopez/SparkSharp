@@ -28,6 +28,11 @@
             return new EnumDataset<T>(this.Elements.Take(n));
         }
 
+        public BaseDataset<T> Skip(int n)
+        {
+            return new EnumDataset<T>(this.Elements.Skip(n));
+        }
+
         public abstract IEnumerable<T> Elements { get; }
 
         public IEnumerator<T> GetEnumerator()

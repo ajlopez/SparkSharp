@@ -56,6 +56,16 @@
         }
 
         [TestMethod]
+        public void ReduceSumWithSkip()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 4 });
+            var result = ds.Skip(2).Reduce((x, y) => x + y);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(7, result);
+        }
+
+        [TestMethod]
         public void ReduceCountStrings()
         {
             EnumDataset<string> ds = new EnumDataset<string>(new string[] { "foo", "bar" });
