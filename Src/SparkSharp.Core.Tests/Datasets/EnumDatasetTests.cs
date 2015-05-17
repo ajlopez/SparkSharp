@@ -21,5 +21,18 @@
 
             Assert.AreEqual(3, ds.Count());
         }
+
+        [TestMethod]
+        public void MapIncrement()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            EnumDataset<int> mapds = ds.Map(i => i + 1);
+            var enumerator = mapds.GetEnumerator();
+
+            for (int k = 1; enumerator.MoveNext(); k++)
+                Assert.AreEqual(k + 1, enumerator.Current);
+
+            Assert.AreEqual(3, mapds.Count());
+        }
     }
 }

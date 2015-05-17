@@ -15,6 +15,11 @@
             this.elements = elements;
         }
 
+        public EnumDataset<S> Map<S>(Func<T, S> map)
+        {
+            return new EnumDataset<S>(this.ApplyMap(map));
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             return this.elements.GetEnumerator();
@@ -23,6 +28,12 @@
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.elements.GetEnumerator();
+        }
+
+        private IEnumerable<S> ApplyMap<S>(Func<T, S> map)
+        {
+            foreach (var elem in this)
+                yield return map(elem);
         }
     }
 }
