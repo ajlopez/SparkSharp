@@ -15,6 +15,11 @@
             return new EnumDataset<S>(this.ApplyMap(map));
         }
 
+        public BaseDataset<S> Split<S>(Func<T, IEnumerable<S>> split)
+        {
+            return new EnumDataset<S>(this.ApplySplit(split));
+        }
+
         public S Reduce<S>(Func<S, T, S> reduce)
         {
             S result = default(S);
@@ -49,6 +54,13 @@
         {
             foreach (var elem in this)
                 yield return map(elem);
+        }
+
+        private IEnumerable<S> ApplySplit<S>(Func<T, IEnumerable<S>> split)
+        {
+            foreach (var elem in this)
+                foreach (var elem2 in split(elem))
+                    yield return elem2;
         }
     }
 }

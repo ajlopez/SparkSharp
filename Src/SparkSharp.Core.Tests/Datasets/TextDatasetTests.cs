@@ -28,6 +28,33 @@
         }
 
         [TestMethod]
+        public void SplitToChars()
+        {
+            TextDataset ds = new TextDataset("foo\nbar");
+            var enumerator = ds.Split<char>(s => s.ToCharArray()).GetEnumerator();
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual('f', enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual('o', enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual('o', enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual('b', enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual('a', enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual('r', enumerator.Current);
+
+            Assert.IsFalse(enumerator.MoveNext());
+        }
+
+        [TestMethod]
         public void MapConcat()
         {
             TextDataset ds = new TextDataset("foo\nbar");
