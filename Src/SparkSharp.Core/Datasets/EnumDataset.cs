@@ -20,6 +20,16 @@
             return new EnumDataset<S>(this.ApplyMap(map));
         }
 
+        public T Reduce(Func<T, T, T> reduce)
+        {
+            T result = default(T);
+
+            foreach (var elem in this)
+                result = reduce(elem, result);
+
+            return result;
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             return this.elements.GetEnumerator();

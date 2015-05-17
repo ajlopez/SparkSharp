@@ -34,5 +34,25 @@
 
             Assert.AreEqual(3, mapds.Count());
         }
+
+        [TestMethod]
+        public void ReduceSum()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            var result = ds.Reduce((x, y) => x + y);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(6, result);
+        }
+
+        [TestMethod]
+        public void ReduceCountStrings()
+        {
+            EnumDataset<string> ds = new EnumDataset<string>(new string[] { "foo", "bar" });
+            var result = ds.Map(s => 1).Reduce((x, y) => x + y);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result);
+        }
     }
 }
