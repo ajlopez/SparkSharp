@@ -1,6 +1,7 @@
 ﻿namespace SparkSharp.Core.Tests.Datasets
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -20,6 +21,7 @@
                 Assert.AreEqual(k, enumerator.Current);
 
             Assert.AreEqual(3, ds.Count());
+            Assert.IsNotNull(((IEnumerable)ds).GetEnumerator());
         }
 
         [TestMethod]
