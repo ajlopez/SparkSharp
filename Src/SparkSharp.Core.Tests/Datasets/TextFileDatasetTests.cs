@@ -38,7 +38,7 @@
         public void MapConcat()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Lines.txt");
-            EnumDataset<string> mapds = ds.Map(i => i + "a");
+            BaseDataset<string> mapds = ds.Map(i => i + "a");
             var enumerator = mapds.GetEnumerator();
 
             Assert.IsTrue(enumerator.MoveNext());

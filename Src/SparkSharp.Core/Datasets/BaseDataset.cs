@@ -10,7 +10,7 @@
     {
         public abstract IEnumerable<T> Elements { get; }
 
-        public EnumDataset<S> Map<S>(Func<T, S> map)
+        public BaseDataset<S> Map<S>(Func<T, S> map)
         {
             return new EnumDataset<S>(this.ApplyMap(map));
         }
