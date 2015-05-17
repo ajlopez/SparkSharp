@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkSharp.Core", "SparkSharp.Core\SparkSharp.Core.csproj", "{23AD3241-79DF-4369-AF62-7D39C7D3415A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkSharp.Core.Tests", "SparkSharp.Core.Tests\SparkSharp.Core.Tests.csproj", "{E98E2DA5-6EED-485A-943E-A82695F7C556}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39402617-0373-48FD-B827-5AD476DC54FB}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		SparkSharp.vsmdi = SparkSharp.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SparkSharp.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23AD3241-79DF-4369-AF62-7D39C7D3415A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23AD3241-79DF-4369-AF62-7D39C7D3415A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23AD3241-79DF-4369-AF62-7D39C7D3415A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23AD3241-79DF-4369-AF62-7D39C7D3415A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E98E2DA5-6EED-485A-943E-A82695F7C556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E98E2DA5-6EED-485A-943E-A82695F7C556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E98E2DA5-6EED-485A-943E-A82695F7C556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E98E2DA5-6EED-485A-943E-A82695F7C556}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
