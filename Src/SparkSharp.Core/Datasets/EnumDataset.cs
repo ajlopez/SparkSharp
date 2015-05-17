@@ -15,9 +15,12 @@
             this.elements = elements;
         }
 
-        public override IEnumerator<T> GetEnumerator()
+        public override IEnumerable<T> Elements 
         {
-            return this.elements.GetEnumerator();
+            get
+            {
+                return this.elements;
+            }
         }
     }
 }

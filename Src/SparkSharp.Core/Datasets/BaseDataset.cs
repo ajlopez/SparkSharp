@@ -23,17 +23,27 @@
             return result;
         }
 
+        public BaseDataset<T> Take(int n)
+        {
+            return new EnumDataset<T>(this.Elements.Take(n));
+        }
+
+        public abstract IEnumerable<T> Elements { get; }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this.Elements.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.Elements.GetEnumerator();
+        }
+
         private IEnumerable<S> ApplyMap<S>(Func<T, S> map)
         {
             foreach (var elem in this)
                 yield return map(elem);
-        }
-
-        public abstract IEnumerator<T> GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
         }
     }
 }

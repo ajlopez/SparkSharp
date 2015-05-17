@@ -46,6 +46,16 @@
         }
 
         [TestMethod]
+        public void ReduceSumWithTake()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            var result = ds.Take(2).Reduce((x, y) => x + y);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result);
+        }
+
+        [TestMethod]
         public void ReduceCountStrings()
         {
             EnumDataset<string> ds = new EnumDataset<string>(new string[] { "foo", "bar" });
