@@ -45,6 +45,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datasets\TextFileDatasetTests.cs" />
     <Compile Include="Datasets\TextDatasetTests.cs" />
     <Compile Include="Datasets\EnumDatasetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +55,11 @@
       <Project>{23AD3241-79DF-4369-AF62-7D39C7D3415A}</Project>
       <Name>SparkSharp.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\Lines.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
