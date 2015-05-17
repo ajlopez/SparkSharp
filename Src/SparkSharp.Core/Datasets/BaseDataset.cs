@@ -18,7 +18,7 @@
             T result = default(T);
 
             foreach (var elem in this)
-                result = reduce(elem, result);
+                result = reduce(result, elem);
 
             return result;
         }
