@@ -15,9 +15,9 @@
             return new EnumDataset<S>(this.ApplyMap(map));
         }
 
-        public T Reduce(Func<T, T, T> reduce)
+        public S Reduce<S>(Func<S, T, S> reduce)
         {
-            T result = default(T);
+            S result = default(S);
 
             foreach (var elem in this)
                 result = reduce(result, elem);

@@ -61,7 +61,7 @@
         public void ReduceConcat()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Lines.txt");
-            var result = ds.Reduce((x, y) => x + y);
+            var result = ds.Reduce<string>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual("foobarzoowar", result);
@@ -71,7 +71,7 @@
         public void ReduceConcatWithTake()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Lines.txt");
-            var result = ds.Take(2).Reduce((x, y) => x + y);
+            var result = ds.Take(2).Reduce<string>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual("foobar", result);
@@ -81,7 +81,7 @@
         public void ReduceSumWithSkip()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Lines.txt");
-            var result = ds.Skip(2).Reduce((x, y) => x + y);
+            var result = ds.Skip(2).Reduce<string>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual("zoowar", result);
@@ -91,7 +91,7 @@
         public void ReduceCountStrings()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Lines.txt");
-            var result = ds.Map(s => 1).Reduce((x, y) => x + y);
+            var result = ds.Map(s => 1).Reduce<int>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(4, result);

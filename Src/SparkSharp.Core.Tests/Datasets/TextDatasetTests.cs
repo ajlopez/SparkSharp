@@ -48,7 +48,7 @@
         public void ReduceConcat()
         {
             TextDataset ds = new TextDataset("foo\nbar");
-            var result = ds.Reduce((x, y) => x + y);
+            var result = ds.Reduce<string>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual("foobar", result);
@@ -58,7 +58,7 @@
         public void ReduceConcatWithTake()
         {
             TextDataset ds = new TextDataset("foo\nbar\nzoo");
-            var result = ds.Take(2).Reduce((x, y) => x + y);
+            var result = ds.Take(2).Reduce<string>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual("foobar", result);
@@ -68,7 +68,7 @@
         public void ReduceSumWithSkip()
         {
             TextDataset ds = new TextDataset("zoo\nwar\nfoo\nbar");
-            var result = ds.Skip(2).Reduce((x, y) => x + y);
+            var result = ds.Skip(2).Reduce<string>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual("foobar", result);
@@ -78,7 +78,7 @@
         public void ReduceCountStrings()
         {
             TextDataset ds = new TextDataset("zoo\nwar\nfoo\nbar");
-            var result = ds.Map(s => 1).Reduce((x, y) => x + y);
+            var result = ds.Map(s => 1).Reduce<int>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(4, result);

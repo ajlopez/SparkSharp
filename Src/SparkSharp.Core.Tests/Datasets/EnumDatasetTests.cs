@@ -41,7 +41,7 @@
         public void ReduceSum()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
-            var result = ds.Reduce((x, y) => x + y);
+            var result = ds.Reduce<int>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(6, result);
@@ -51,7 +51,7 @@
         public void ReduceSumWithTake()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
-            var result = ds.Take(2).Reduce((x, y) => x + y);
+            var result = ds.Take(2).Reduce<int>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result);
@@ -61,7 +61,7 @@
         public void ReduceSumWithSkip()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 4 });
-            var result = ds.Skip(2).Reduce((x, y) => x + y);
+            var result = ds.Skip(2).Reduce<int>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(7, result);
@@ -71,7 +71,7 @@
         public void ReduceCountStrings()
         {
             EnumDataset<string> ds = new EnumDataset<string>(new string[] { "foo", "bar" });
-            var result = ds.Map(s => 1).Reduce((x, y) => x + y);
+            var result = ds.Map(s => 1).Reduce<int>((x, y) => x + y);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result);
