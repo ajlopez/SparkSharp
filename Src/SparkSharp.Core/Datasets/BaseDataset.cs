@@ -8,6 +8,8 @@
 
     public abstract class BaseDataset<T> : IEnumerable<T>
     {
+        public abstract IEnumerable<T> Elements { get; }
+
         public EnumDataset<S> Map<S>(Func<T, S> map)
         {
             return new EnumDataset<S>(this.ApplyMap(map));
@@ -32,8 +34,6 @@
         {
             return new EnumDataset<T>(this.Elements.Skip(n));
         }
-
-        public abstract IEnumerable<T> Elements { get; }
 
         public IEnumerator<T> GetEnumerator()
         {
