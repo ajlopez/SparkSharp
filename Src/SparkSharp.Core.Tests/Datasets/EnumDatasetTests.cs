@@ -25,6 +25,13 @@
         }
 
         [TestMethod]
+        public void CountElements()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            Assert.AreEqual(3, ds.Count());
+        }
+
+        [TestMethod]
         public void MapIncrement()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
