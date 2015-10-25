@@ -15,6 +15,11 @@
             return new EnumDataset<S>(this.ApplyMap(map));
         }
 
+        public KeyValueDataset<K, V> Map<K, V>(Func<T, KeyValuePair<K, V>> map)
+        {
+            return new KeyValueDataset<K, V>(this.ApplyMap(map));
+        }
+
         public BaseDataset<S> FlatMap<S>(Func<T, IEnumerable<S>> map)
         {
             return new EnumDataset<S>(this.ApplyFlatMap(map));

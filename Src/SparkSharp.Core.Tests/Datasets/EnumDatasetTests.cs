@@ -63,6 +63,19 @@
         }
 
         [TestMethod]
+        public void MapKeyValue()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            var mapds = ds.Map(i => new KeyValuePair<int, int>(i, i * i));
+            var enumerator = mapds.GetEnumerator();
+
+            for (int k = 1; enumerator.MoveNext(); k++)
+                Assert.AreEqual(new KeyValuePair<int, int>(k, k * k), enumerator.Current);
+
+            Assert.AreEqual(3, mapds.Count());
+        }
+
+        [TestMethod]
         public void ReduceSum()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });

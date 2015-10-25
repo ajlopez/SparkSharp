@@ -9,6 +9,7 @@ an exact implementation. There are key ideas borrowed from original Spark, like 
 - [Spark Quick Start](http://spark.apache.org/docs/latest/quick-start.html)
 - [Spark Machine Learning, types, algorithms and utilities](http://spark.apache.org/docs/latest/mllib-guide.html)
 - [Spark Machine Learning Data Types](http://spark.apache.org/docs/latest/mllib-data-types.html)
+- [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
 
 ## License
 
