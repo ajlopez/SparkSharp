@@ -35,6 +35,11 @@
             return new EnumDataset<T>(this.Elements.Take(n));
         }
 
+        public BaseDataset<T> Filter(Func<T, bool> predicate)
+        {
+            return new EnumDataset<T>(this.Elements.Where(predicate));
+        }
+
         public BaseDataset<T> Skip(int n)
         {
             return new EnumDataset<T>(this.Elements.Skip(n));

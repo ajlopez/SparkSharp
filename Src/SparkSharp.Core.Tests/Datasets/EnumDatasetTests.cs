@@ -32,6 +32,17 @@
         }
 
         [TestMethod]
+        public void FilterElements()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 4, 5 });
+            var fds = ds.Filter(x => x % 2 == 1);
+            Assert.AreEqual(3, fds.Count());
+            Assert.AreEqual(1, fds.First());
+            Assert.AreEqual(3, fds.Skip(1).First());
+            Assert.AreEqual(5, fds.Skip(2).First());
+        }
+
+        [TestMethod]
         public void FirstElement()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
