@@ -54,6 +54,23 @@
         }
 
         [TestMethod]
+        public void CartesianProduct()
+        {
+            EnumDataset<int> ds1 = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            EnumDataset<string> ds2 = new EnumDataset<string>(new string[] { "foo", "bar" });
+            var cds = ds1.Cartesian(ds2);
+
+            Assert.IsTrue(cds.Contains(new KeyValuePair<int, string>(1, "foo")));
+            Assert.IsTrue(cds.Contains(new KeyValuePair<int, string>(1, "bar")));
+            Assert.IsTrue(cds.Contains(new KeyValuePair<int, string>(2, "foo")));
+            Assert.IsTrue(cds.Contains(new KeyValuePair<int, string>(2, "bar")));
+            Assert.IsTrue(cds.Contains(new KeyValuePair<int, string>(3, "foo")));
+            Assert.IsTrue(cds.Contains(new KeyValuePair<int, string>(3, "bar")));
+
+            Assert.AreEqual(6, cds.Count());
+        }
+
+        [TestMethod]
         public void FirstElement()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });

@@ -55,6 +55,11 @@
             return new EnumDataset<T>(this.Elements.Distinct());
         }
 
+        public EnumDataset<KeyValuePair<T, S>> Cartesian<S>(BaseDataset<S> ds)
+        {
+            return new EnumDataset<KeyValuePair<T, S>>(this.ApplyCartesian<S>(ds.Elements));
+        }
+
         public BaseDataset<T> Skip(int n)
         {
             return new EnumDataset<T>(this.Elements.Skip(n));
@@ -88,6 +93,13 @@
             foreach (var elem in this)
                 foreach (var elem2 in split(elem))
                     yield return elem2;
+        }
+
+        private IEnumerable<KeyValuePair<T, S>> ApplyCartesian<S>(IEnumerable<S> elements)
+        {
+            foreach (var elem in this.Elements)
+                foreach (var elem2 in elements)
+                    yield return new KeyValuePair<T, S>(elem, elem2);
         }
     }
 }
