@@ -24,6 +24,8 @@
 
                 for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                     yield return line;
+
+                reader.Close();
             }
         }
     }
