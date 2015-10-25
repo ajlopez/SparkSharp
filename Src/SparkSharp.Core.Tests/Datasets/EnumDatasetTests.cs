@@ -46,11 +46,11 @@
         public void DistinctElements()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 2, 3, 3 });
-            var fds = ds.Distinct();
-            Assert.AreEqual(3, fds.Count());
-            Assert.IsTrue(fds.Contains(1));
-            Assert.IsTrue(fds.Contains(2));
-            Assert.IsTrue(fds.Contains(3));
+            var dds = ds.Distinct();
+            Assert.AreEqual(3, dds.Count());
+            Assert.IsTrue(dds.Contains(1));
+            Assert.IsTrue(dds.Contains(2));
+            Assert.IsTrue(dds.Contains(3));
         }
 
         [TestMethod]
