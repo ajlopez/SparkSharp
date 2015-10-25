@@ -50,6 +50,11 @@
             return new EnumDataset<T>(this.Elements.Where(predicate));
         }
 
+        public BaseDataset<T> Distinct()
+        {
+            return new EnumDataset<T>(this.Elements.Distinct());
+        }
+
         public BaseDataset<T> Skip(int n)
         {
             return new EnumDataset<T>(this.Elements.Skip(n));
