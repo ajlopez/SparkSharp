@@ -48,6 +48,7 @@
     <Compile Include="Datasets\TextFileDatasetTests.cs" />
     <Compile Include="Datasets\TextDatasetTests.cs" />
     <Compile Include="Datasets\EnumDatasetTests.cs" />
+    <Compile Include="Datasets\KeyValueDatasetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

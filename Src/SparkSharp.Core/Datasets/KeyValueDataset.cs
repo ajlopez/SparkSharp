@@ -21,5 +21,23 @@
                 return this.elements;
             }
         }
+
+        public KeyValueDataset<K, V> ReduceByKey(Func<V, V, V> reduce)
+        {
+            IDictionary<K, V> keyvalues = new Dictionary<K, V>();
+
+            foreach (var elem in this.elements)
+            {
+                var key = elem.Key;
+                var value = elem.Value;
+
+                if (keyvalues.ContainsKey(key))
+                    keyvalues[key] = reduce(keyvalues[key], value);
+                else
+                    keyvalues[key] = reduce(default(V), value);
+            }
+
+            return new KeyValueDataset<K, V>(keyvalues);
+        }
     }
 }
