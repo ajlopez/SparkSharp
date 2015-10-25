@@ -54,7 +54,7 @@
             Assert.AreEqual("wara", enumerator.Current);
 
             Assert.IsFalse(enumerator.MoveNext());
-            Assert.AreEqual(4, ds.Count());
+            Assert.AreEqual(4, mapds.Count());
         }
 
         [TestMethod]
@@ -95,6 +95,29 @@
 
             Assert.IsNotNull(result);
             Assert.AreEqual(4, result);
+        }
+
+        [TestMethod]
+        public void FlatMap()
+        {
+            TextFileDataset ds = new TextFileDataset("Files\\Words.txt");
+            BaseDataset<string> mapds = ds.FlatMap(i => i.Split(' '));
+            var enumerator = mapds.GetEnumerator();
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual("foo", enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual("bar", enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual("zoo", enumerator.Current);
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual("war", enumerator.Current);
+
+            Assert.IsFalse(enumerator.MoveNext());
+            Assert.AreEqual(4, mapds.Count());
         }
     }
 }
