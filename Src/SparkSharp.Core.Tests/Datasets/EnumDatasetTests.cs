@@ -32,6 +32,13 @@
         }
 
         [TestMethod]
+        public void FirstElement()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            Assert.AreEqual(1, ds.First());
+        }
+
+        [TestMethod]
         public void MapIncrement()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
