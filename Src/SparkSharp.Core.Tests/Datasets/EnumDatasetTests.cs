@@ -43,6 +43,14 @@
         }
 
         [TestMethod]
+        public void ForEach()
+        {
+            int accum = 0;
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 4, 5 });
+            ds.ForEach(x => { accum += x; });
+        }
+
+        [TestMethod]
         public void DistinctElements()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 2, 3, 3 });

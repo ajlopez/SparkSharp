@@ -25,6 +25,12 @@
             return new EnumDataset<S>(this.ApplyFlatMap(map));
         }
 
+        public void ForEach(Action<T> fn)
+        {
+            foreach (var elem in this.Elements)
+                fn(elem);
+        }
+
         public BaseDataset<S> Split<S>(Func<T, IEnumerable<S>> split)
         {
             return new EnumDataset<S>(this.ApplySplit(split));
