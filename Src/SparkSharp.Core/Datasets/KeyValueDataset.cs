@@ -39,5 +39,23 @@
 
             return new KeyValueDataset<K, V>(keyvalues);
         }
+
+        public IDictionary<K, int> CountByKey()
+        {
+            IDictionary<K, int> keycounts = new Dictionary<K, int>();
+
+            foreach (var elem in this.elements)
+            {
+                var key = elem.Key;
+                var value = elem.Value;
+
+                if (keycounts.ContainsKey(key))
+                    keycounts[key]++;
+                else
+                    keycounts[key] = 1;
+            }
+
+            return keycounts;
+        }
     }
 }
