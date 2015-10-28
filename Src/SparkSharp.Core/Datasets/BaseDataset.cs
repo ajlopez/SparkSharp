@@ -31,6 +31,11 @@
                 fn(elem);
         }
 
+        public IList<T> Collect()
+        {
+            return new List<T>(this.Elements);
+        }
+
         public BaseDataset<S> Split<S>(Func<T, IEnumerable<S>> split)
         {
             return new EnumDataset<S>(this.ApplySplit(split));

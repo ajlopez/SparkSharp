@@ -51,6 +51,20 @@
         }
 
         [TestMethod]
+        public void Collect()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+
+            var result = ds.Collect();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(1, result[0]);
+            Assert.AreEqual(2, result[1]);
+            Assert.AreEqual(3, result[2]);
+        }
+
+        [TestMethod]
         public void DistinctElements()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 2, 3, 3 });
