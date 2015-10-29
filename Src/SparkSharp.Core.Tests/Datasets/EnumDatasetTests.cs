@@ -109,6 +109,19 @@
         }
 
         [TestMethod]
+        public void Intersect()
+        {
+            EnumDataset<int> ds1 = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            EnumDataset<int> ds2 = new EnumDataset<int>(new int[] { 4, 5, 2, 3 });
+            var uds = ds1.Intersect(ds2);
+
+            Assert.IsTrue(uds.Contains(2));
+            Assert.IsTrue(uds.Contains(3));
+
+            Assert.AreEqual(2, uds.Count());
+        }
+
+        [TestMethod]
         public void FirstElement()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });

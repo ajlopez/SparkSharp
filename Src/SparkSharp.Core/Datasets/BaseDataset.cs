@@ -71,6 +71,11 @@
             return new EnumDataset<T>(this.Elements.Union(ds.Elements));
         }
 
+        public BaseDataset<T> Intersect(BaseDataset<T> ds)
+        {
+            return new EnumDataset<T>(this.Elements.Intersect(ds.Elements));
+        }
+
         public EnumDataset<KeyValuePair<T, S>> Cartesian<S>(BaseDataset<S> ds)
         {
             return new EnumDataset<KeyValuePair<T, S>>(this.ApplyCartesian<S>(ds.Elements));
