@@ -43,6 +43,28 @@
         }
 
         [TestMethod]
+        public void ForEach()
+        {
+            int accum = 0;
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 4, 5 });
+            ds.ForEach(x => { accum += x; });
+        }
+
+        [TestMethod]
+        public void Collect()
+        {
+            EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
+
+            var result = ds.Collect();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(1, result[0]);
+            Assert.AreEqual(2, result[1]);
+            Assert.AreEqual(3, result[2]);
+        }
+
+        [TestMethod]
         public void DistinctElements()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3, 2, 3, 3 });
@@ -84,6 +106,19 @@
             Assert.IsTrue(uds.Contains(5));
 
             Assert.AreEqual(5, uds.Count());
+        }
+
+        [TestMethod]
+        public void Intersect()
+        {
+            EnumDataset<int> ds1 = new EnumDataset<int>(new int[] { 1, 2, 3 });
+            EnumDataset<int> ds2 = new EnumDataset<int>(new int[] { 4, 5, 2, 3 });
+            var uds = ds1.Intersect(ds2);
+
+            Assert.IsTrue(uds.Contains(2));
+            Assert.IsTrue(uds.Contains(3));
+
+            Assert.AreEqual(2, uds.Count());
         }
 
         [TestMethod]

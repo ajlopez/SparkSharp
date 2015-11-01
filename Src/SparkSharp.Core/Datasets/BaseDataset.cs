@@ -25,6 +25,17 @@
             return new EnumDataset<S>(this.ApplyFlatMap(map));
         }
 
+        public void ForEach(Action<T> fn)
+        {
+            foreach (var elem in this.Elements)
+                fn(elem);
+        }
+
+        public IList<T> Collect()
+        {
+            return new List<T>(this.Elements);
+        }
+
         public BaseDataset<S> Split<S>(Func<T, IEnumerable<S>> split)
         {
             return new EnumDataset<S>(this.ApplySplit(split));
@@ -58,6 +69,11 @@
         public BaseDataset<T> Union(BaseDataset<T> ds)
         {
             return new EnumDataset<T>(this.Elements.Union(ds.Elements));
+        }
+
+        public BaseDataset<T> Intersect(BaseDataset<T> ds)
+        {
+            return new EnumDataset<T>(this.Elements.Intersect(ds.Elements));
         }
 
         public EnumDataset<KeyValuePair<T, S>> Cartesian<S>(BaseDataset<S> ds)
