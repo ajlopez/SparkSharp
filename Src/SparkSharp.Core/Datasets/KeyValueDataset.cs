@@ -22,6 +22,24 @@
             }
         }
 
+        public KeyValueDataset<K, IEnumerable<V>> GroupByKey()
+        {
+            IDictionary<K, IList<V>> keyvalues = new Dictionary<K, IList<V>>();
+
+            foreach (var elem in this.elements)
+            {
+                var key = elem.Key;
+                var value = elem.Value;
+
+                if (keyvalues.ContainsKey(key))
+                    keyvalues[key].Add(value);
+                else
+                    keyvalues[key] = new List<V>(new V[] { value });
+            }
+
+            return new KeyValueDataset<K, IEnumerable<V>>(keyvalues.Select(kv => new KeyValuePair<K, IEnumerable<V>>(kv.Key, kv.Value)));
+        }
+
         public KeyValueDataset<K, V> ReduceByKey(Func<V, V, V> reduce)
         {
             IDictionary<K, V> keyvalues = new Dictionary<K, V>();
