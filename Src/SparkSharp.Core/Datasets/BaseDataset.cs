@@ -6,11 +6,11 @@
     using System.Linq;
     using System.Text;
 
-    public abstract class BaseDataset<T> : IEnumerable<T>
+    public abstract class BaseDataset<T> : IDataset<T>
     {
         public abstract IEnumerable<T> Elements { get; }
 
-        public BaseDataset<S> Map<S>(Func<T, S> map)
+        public IDataset<S> Map<S>(Func<T, S> map)
         {
             return new EnumDataset<S>(this.ApplyMap(map));
         }
@@ -20,7 +20,7 @@
             return new KeyValueDataset<K, V>(this.ApplyMap(map));
         }
 
-        public BaseDataset<S> FlatMap<S>(Func<T, IEnumerable<S>> map)
+        public IDataset<S> FlatMap<S>(Func<T, IEnumerable<S>> map)
         {
             return new EnumDataset<S>(this.ApplyFlatMap(map));
         }
@@ -36,7 +36,7 @@
             return new List<T>(this.Elements);
         }
 
-        public BaseDataset<S> Split<S>(Func<T, IEnumerable<S>> split)
+        public IDataset<S> Split<S>(Func<T, IEnumerable<S>> split)
         {
             return new EnumDataset<S>(this.ApplySplit(split));
         }
@@ -51,37 +51,37 @@
             return result;
         }
 
-        public BaseDataset<T> Take(int n)
+        public IDataset<T> Take(int n)
         {
             return new EnumDataset<T>(this.Elements.Take(n));
         }
 
-        public BaseDataset<T> Filter(Func<T, bool> predicate)
+        public IDataset<T> Filter(Func<T, bool> predicate)
         {
             return new EnumDataset<T>(this.Elements.Where(predicate));
         }
 
-        public BaseDataset<T> Distinct()
+        public IDataset<T> Distinct()
         {
             return new EnumDataset<T>(this.Elements.Distinct());
         }
 
-        public BaseDataset<T> Union(BaseDataset<T> ds)
+        public IDataset<T> Union(IDataset<T> ds)
         {
             return new EnumDataset<T>(this.Elements.Union(ds.Elements));
         }
 
-        public BaseDataset<T> Intersect(BaseDataset<T> ds)
+        public IDataset<T> Intersect(BaseDataset<T> ds)
         {
             return new EnumDataset<T>(this.Elements.Intersect(ds.Elements));
         }
 
-        public EnumDataset<KeyValuePair<T, S>> Cartesian<S>(BaseDataset<S> ds)
+        public IDataset<KeyValuePair<T, S>> Cartesian<S>(IDataset<S> ds)
         {
             return new EnumDataset<KeyValuePair<T, S>>(this.ApplyCartesian<S>(ds.Elements));
         }
 
-        public BaseDataset<T> Skip(int n)
+        public IDataset<T> Skip(int n)
         {
             return new EnumDataset<T>(this.Elements.Skip(n));
         }

@@ -58,7 +58,7 @@
         public void MapConcat()
         {
             TextDataset ds = new TextDataset("foo\nbar");
-            BaseDataset<string> mapds = ds.Map(i => i + "a");
+            IDataset<string> mapds = ds.Map(i => i + "a");
             var enumerator = mapds.GetEnumerator();
 
             Assert.IsTrue(enumerator.MoveNext());

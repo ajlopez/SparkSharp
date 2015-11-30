@@ -132,7 +132,7 @@
         public void MapIncrement()
         {
             EnumDataset<int> ds = new EnumDataset<int>(new int[] { 1, 2, 3 });
-            BaseDataset<int> mapds = ds.Map(i => i + 1);
+            IDataset<int> mapds = ds.Map(i => i + 1);
             var enumerator = mapds.GetEnumerator();
 
             for (int k = 1; enumerator.MoveNext(); k++)

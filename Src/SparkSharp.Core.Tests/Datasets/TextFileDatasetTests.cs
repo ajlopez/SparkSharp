@@ -38,7 +38,7 @@
         public void MapConcat()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Lines.txt");
-            BaseDataset<string> mapds = ds.Map(i => i + "a");
+            IDataset<string> mapds = ds.Map(i => i + "a");
             var enumerator = mapds.GetEnumerator();
 
             Assert.IsTrue(enumerator.MoveNext());
@@ -101,7 +101,7 @@
         public void FlatMap()
         {
             TextFileDataset ds = new TextFileDataset("Files\\Words.txt");
-            BaseDataset<string> mapds = ds.FlatMap(i => i.Split(' '));
+            IDataset<string> mapds = ds.FlatMap(i => i.Split(' '));
             var enumerator = mapds.GetEnumerator();
 
             Assert.IsTrue(enumerator.MoveNext());
