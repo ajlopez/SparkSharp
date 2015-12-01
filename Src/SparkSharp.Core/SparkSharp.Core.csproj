@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Datasets\BaseDataset.cs" />
     <Compile Include="Datasets\IDataset.cs" />
+    <Compile Include="Datasets\IKeyValueDataset.cs" />
     <Compile Include="Datasets\KeyValueDataset.cs" />
     <Compile Include="Datasets\TextFileDataset.cs" />
     <Compile Include="Datasets\TextDataset.cs" />

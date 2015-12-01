@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public class KeyValueDataset<K, V> : BaseDataset<KeyValuePair<K, V>>
+    public class KeyValueDataset<K, V> : BaseDataset<KeyValuePair<K, V>>, IKeyValueDataset<K,V>
     {
         private IEnumerable<KeyValuePair<K, V>> elements;
 
@@ -22,7 +22,7 @@
             }
         }
 
-        public KeyValueDataset<K, IEnumerable<V>> GroupByKey()
+        public IKeyValueDataset<K, IEnumerable<V>> GroupByKey()
         {
             IDictionary<K, IList<V>> keyvalues = new Dictionary<K, IList<V>>();
 
@@ -40,7 +40,7 @@
             return new KeyValueDataset<K, IEnumerable<V>>(keyvalues.Select(kv => new KeyValuePair<K, IEnumerable<V>>(kv.Key, kv.Value)));
         }
 
-        public KeyValueDataset<K, V> ReduceByKey(Func<V, V, V> reduce)
+        public IKeyValueDataset<K, V> ReduceByKey(Func<V, V, V> reduce)
         {
             IDictionary<K, V> keyvalues = new Dictionary<K, V>();
 

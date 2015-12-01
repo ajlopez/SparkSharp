@@ -15,7 +15,7 @@
             return new EnumDataset<S>(this.ApplyMap(map));
         }
 
-        public KeyValueDataset<K, V> Map<K, V>(Func<T, KeyValuePair<K, V>> map)
+        public IKeyValueDataset<K, V> Map<K, V>(Func<T, KeyValuePair<K, V>> map)
         {
             return new KeyValueDataset<K, V>(this.ApplyMap(map));
         }

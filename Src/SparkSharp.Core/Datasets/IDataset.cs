@@ -23,7 +23,7 @@
         
         IDataset<T> Intersect(BaseDataset<T> ds);
         
-        KeyValueDataset<K, V> Map<K, V>(Func<T, KeyValuePair<K, V>> map);
+        IKeyValueDataset<K, V> Map<K, V>(Func<T, KeyValuePair<K, V>> map);
         
         IDataset<S> Map<S>(Func<T, S> map);
         
